@@ -17,6 +17,8 @@ public class CharacterItem implements Comparable<CharacterItem>, Parcelable {
 
     private static DateFormat df = DateFormat.getDateInstance();
 
+    // TODO add more details to database
+
     @NonNull
     @PrimaryKey(autoGenerate = true)
     private int id;
