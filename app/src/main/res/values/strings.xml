@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DND Character Tracker</string>
+    <string name="search_bar_text">Search...</string>
+    <string name="name_label_text">Name: </string>
+    <string name="tags_text">Tags: </string>
+    <string name="save_button_text">Save</string>
+    <string name="delete_item_message">Delete %1$s?</string>
+    <string name="delete_dialog_title">Delete note</string>
+</resources>
