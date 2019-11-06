@@ -53,8 +53,6 @@ public class CharacterListActivity extends AppCompatActivity implements
 
     CharacterItem mItem;
 
-    private EditText mSearchString;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +61,6 @@ public class CharacterListActivity extends AppCompatActivity implements
         // Create ViewModel, associate with this Activity
 
         characterViewModel = new CharacterViewModel(getApplication());
-
-
 
         if (savedInstanceState == null) {
             Log.d(TAG, "onCreate has no instance state. Setting up ArrayList");
@@ -76,8 +72,8 @@ public class CharacterListActivity extends AppCompatActivity implements
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
 
-        ft.add(R.id.button_container, buttonFragment, TAG_BUTTON_FRAG);
         ft.add(R.id.item_list_view_container, itemListFragment, TAG_LIST_FRAG);
+        ft.add(R.id.button_container, buttonFragment, TAG_BUTTON_FRAG);
 
         ft.commit();
     }
@@ -141,9 +137,11 @@ public class CharacterListActivity extends AppCompatActivity implements
     }
 
     public void takePicture(View button) {
+        Log.d(TAG, "Attempt to take a picture");
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            Log.d(TAG, "taking picture");
             try{
                 File imageFile = createImageFile();
                 if (imageFile != null) {

@@ -43,13 +43,11 @@ public class NewCharacterFragment extends Fragment {
 
     private SaveChangesListener mSaveChangesListener;
 
-    EditText mEditName;
-    EditText mEditTags;
-    ImageButton mEditCharacterImage;
+    private EditText mEditName;
+    private EditText mEditTags;
+    private ImageButton mEditCharacterImage;
 
-    CharacterItem mItem = new CharacterItem();
-
-    Button mSaveButton;
+    private CharacterItem mItem = new CharacterItem();
 
     public static NewCharacterFragment newInstance() {
         NewCharacterFragment fragment = new NewCharacterFragment();
@@ -90,13 +88,13 @@ public class NewCharacterFragment extends Fragment {
             }
         });
 
-        mSaveButton = view.findViewById(R.id.save_button);
-        mSaveButton.setOnClickListener(new View.OnClickListener() {
+        Button addItem = view.findViewById(R.id.save_button);
+        addItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 Log.d(TAG, "Save button has been clicked");
                 if (mEditName == null || mEditTags == null){
-
+                    Toast.makeText(NewCharacterFragment.this.getContext(), "Must include a name and tags", Toast.LENGTH_SHORT).show();
                 }
 
                 // Setting data to object
@@ -104,16 +102,17 @@ public class NewCharacterFragment extends Fragment {
                 mItem.setTags(mEditTags.getText().toString());
                 Date date = new Date();
                 mItem.setDateCreated(date);
+                mItem.setImagePath("");
 
                 mSaveChangesListener.saveChanges(mItem);
             }
         });
 
 
-        if(getArguments() != null && getArguments().getParcelable(ARGS_EDIT) != null) {
+        /*if(getArguments() != null && getArguments().getParcelable(ARGS_EDIT) != null) {
             mItem = getArguments().getParcelable(ARGS_EDIT);
             setCurrentAttributes(mItem);
-        }
+        }*/
 
         return view;
     }

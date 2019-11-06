@@ -33,7 +33,7 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnList
 
     private RecyclerView mListView;
     private ItemListAdapter mListAdapter;
-    private List<CharacterItem> mItems = new ArrayList<CharacterItem>();
+    private List<CharacterItem> mItems;
 
     private CharacterViewModel mCharacterViewModel;
 
@@ -110,11 +110,6 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnList
         confirmDeleteDialog.show();
 
         return ;
-    }
-
-    private CharacterItem defaultCharacter() {
-        CharacterItem characterItem = new CharacterItem("Test text", "Test,Tags", "");
-        return characterItem;
     }
 
     public void updateList(CharacterItem item) {
