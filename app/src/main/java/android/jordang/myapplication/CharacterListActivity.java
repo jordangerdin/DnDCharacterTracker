@@ -88,8 +88,11 @@ public class CharacterListActivity extends AppCompatActivity implements
         // TODO add variations of NewCharacterFragment for picture/character/notes
         switch(buttonID){
             case R.id.add_picture_button:
+                //Page for text + picture
             case R.id.add_character_button:
+                //Stats page
             case R.id.add_notes_button:
+                //Page for just text
                 callNewCharacterFragment();
                 break;
         }

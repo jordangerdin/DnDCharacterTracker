@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -28,6 +29,7 @@ public class CharacterItem implements Comparable<CharacterItem>, Parcelable {
 
     }
 
+    @Ignore
     public CharacterItem(String text, String tags, String imagePath) {
         dateCreated = new Date();
         this.text = text;
@@ -85,6 +87,18 @@ public class CharacterItem implements Comparable<CharacterItem>, Parcelable {
         tags = in.readString();
         imagePath = in.readString();
     }
+
+    public static final Creator<CharacterItem> CREATOR = new Creator<CharacterItem>() {
+        @Override
+        public CharacterItem createFromParcel(Parcel in) {
+            return new CharacterItem(in);
+        }
+        @Override
+        public CharacterItem[] newArray(int size) {
+            return new CharacterItem[size];
+        }
+    };
+
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
